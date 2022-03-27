@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+    # server:
+    #   build: ./server/
+    #   image: backend-server
+    #   restart: always
+    #   ports:
+    #     - "5000:5000"
+    #   volumes:
+    #     - ./server:/server
+    #     - /server/node_modules
+    #   depends_on:
+    #     - mongodb
+    #   networks:
+    #     - merntestnetwork
+
+    mongodb:
+      image: mongo:4.0.28
+      restart: always
+      container_name: mongodb
+      volumes:
+          - ./data-node:/data/db
+      ports:
+          - 27017:27017
+      command: mongod --noauth --smallfiles
+      networks:
+          - merntestnetwork
+      environment:
+        MONGO_INITDB_DATABASE: "${INIT_DATABASE}"
+networks:
+    merntestnetwork:
+      driver: bridge
