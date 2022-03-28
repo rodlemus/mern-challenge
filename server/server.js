@@ -14,7 +14,7 @@ class Server {
   serverPort = process.env.SERVER_PORT || 5000;
   configServer() {
     this.app.use(fileUpload({ createParentPath: true }));
-    this.app.use(cors());
+    this.app.use(cors({ origin: true, credentials: true }));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.configRoutes();

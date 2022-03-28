@@ -77,6 +77,7 @@ productsController.getProductsByCategory = async (req, res) => {
     const products = await ProductEntity.find({ category: categoryId })
       .sort(sort)
       .limit(limit)
+      .populate("category")
       .skip(skip);
     res.status(200).send({ data: products });
   } catch (error) {
@@ -95,7 +96,9 @@ productsController.getProductsBySearch = async (req, res) => {
     })
       .sort(sort)
       .limit(limit)
-      .skip(skip);
+      .populate("category")
+      .skip(skip)
+      .exec();
     res.status(200).send({ data: products });
   } catch (error) {
     res.status(500).send();

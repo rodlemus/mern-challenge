@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rodlemus/mern-challenge#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.29.0",
     "cors": "^2.8.5",

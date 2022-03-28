@@ -2,18 +2,25 @@ const router = require("express").Router();
 const categoriesController = require("../controllers/categories.controller");
 const jwtMiddleware = require("../middlewares/validateToken.middleware");
 
-router.post("/categories", jwtMiddleware, categoriesController.saveCategory);
+router.post(
+  "/merntest/api/v1/categories",
+  jwtMiddleware,
+  categoriesController.saveCategory
+);
 router.patch(
-  "/categories/:id",
+  "/merntest/api/v1/categories/:id",
   jwtMiddleware,
   categoriesController.updateCategoryById
 );
 router.delete(
-  "/categories/:id",
+  "/merntest/api/v1/categories/:id",
   jwtMiddleware,
   categoriesController.deleteCategoryById
 );
-router.get("/categories/:id", categoriesController.getCategoryById);
-router.get("/categories", categoriesController.getCategories);
+router.get(
+  "/merntest/api/v1/categories/:id",
+  categoriesController.getCategoryById
+);
+router.get("/merntest/api/v1/categories", categoriesController.getCategories);
 
 module.exports = router;
